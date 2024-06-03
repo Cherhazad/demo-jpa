@@ -2,6 +2,7 @@ package fr.diginamic;
 
 import java.util.List;
 
+import fr.diginamic.Bibliothèque.Emprunt;
 import fr.diginamic.Bibliothèque.Livre;
 import fr.diginamic.Region.Region;
 import jakarta.persistence.EntityManager;
@@ -49,6 +50,14 @@ public class ConnexionJpa {
 		
 		for (Livre l: listeLivres) {
 			System.out.println(l);
+		}
+		
+		//Afficher les livres associés à un emprunt
+		TypedQuery<Emprunt> queryEmprunt = em.createQuery("select e from Emprunt e", Emprunt.class);
+		List<Emprunt> listeEmprunts = queryEmprunt.getResultList();
+		
+		for (Emprunt e: listeEmprunts) {
+			System.out.println(e);
 		}
 		
 		transaction.commit();
