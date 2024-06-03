@@ -1,11 +1,14 @@
 package fr.diginamic.Bibliothèque;
 
 import java.sql.Date;
+import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
@@ -16,6 +19,7 @@ import jakarta.persistence.TemporalType;
 public class Emprunt {
 	
 	@Id
+	@Column(name = "ID")
 	private Integer id;
 	
 	@Temporal(value = TemporalType.DATE)
@@ -32,6 +36,16 @@ public class Emprunt {
 	@ManyToOne
 	@JoinColumn(name = "ID_CLIENT")
 	private Client client;
+	
+	@ManyToMany
+	@JoinTable(name = "COMPO",
+			joinColumns = @JoinColumn(name="ID_EMP", referencedColumnName="ID"),
+			inverseJoinColumns = @JoinColumn(name = "ID_LIV", referencedColumnName="ID")
+	)
+	private Set<Livre> livres;
+	public Set<Livre> getLivres(){
+		return livres;
+	}
 	
 	
 	

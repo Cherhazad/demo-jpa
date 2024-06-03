@@ -2,6 +2,7 @@ package fr.diginamic;
 
 import java.util.List;
 
+import fr.diginamic.Bibliothèque.Client;
 import fr.diginamic.Bibliothèque.Emprunt;
 import fr.diginamic.Bibliothèque.Livre;
 import fr.diginamic.Region.Region;
@@ -44,7 +45,7 @@ public class ConnexionJpa {
 			System.out.println(r);
 		}
 		
-		//Extraire une liste de livres
+		// Extraire une liste de livres
 		TypedQuery<Livre> queryLiv =  em.createQuery("select l from Livre l", Livre.class);
 		List<Livre> listeLivres = queryLiv.getResultList();
 		
@@ -52,12 +53,25 @@ public class ConnexionJpa {
 			System.out.println(l);
 		}
 		
-		//Afficher les livres associés à un emprunt
+		System.out.println("-------------------------------");
+		
+		// Afficher les livres associés à un emprunt
 		TypedQuery<Emprunt> queryEmprunt = em.createQuery("select e from Emprunt e", Emprunt.class);
 		List<Emprunt> listeEmprunts = queryEmprunt.getResultList();
 		
 		for (Emprunt e: listeEmprunts) {
-			System.out.println(e);
+			System.out.println(e + " " + e.getLivres());
+		}
+		
+		System.out.println("-------------------------------");
+		
+		// Afficher tous les emprunts d'un client donné
+		TypedQuery<Client> queryEmpruntClient = em.createQuery("select c from Client c", Client.class);
+		List<Client> listeEmpruntClient = queryEmpruntClient.getResultList();
+		
+		
+		for (Client c: listeEmpruntClient) {
+			System.out.println(c + " " + c.getEmpruntsClient());
 		}
 		
 		transaction.commit();

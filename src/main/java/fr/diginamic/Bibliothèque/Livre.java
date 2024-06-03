@@ -1,10 +1,11 @@
 package fr.diginamic.Bibliothèque;
 
+import java.util.Set;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -13,7 +14,7 @@ public class Livre {
 	
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID")
 	private Integer id;
 	
 	@Column(name="TITRE")
@@ -22,11 +23,16 @@ public class Livre {
 	@Column(name="AUTEUR")
 	private String auteur;
 	
+	@ManyToMany(mappedBy = "livres")
+	private Set<Emprunt> emprunts;
+	public Set<Emprunt> getEmprunts() {
+		return emprunts;
+	}
+	
 	/** Constructeur
 	 * 
 	 */
 	public Livre() {
-	
 	}
 	
 	

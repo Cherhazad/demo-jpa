@@ -13,6 +13,7 @@ import jakarta.persistence.Table;
 public class Client {
 
 	@Id
+	@Column(name = "ID")
 	private Integer id;
 	
 	@Column(name = "NOM")
@@ -23,6 +24,9 @@ public class Client {
 	
 	@OneToMany(mappedBy="client")
 	private Set<Emprunt> emprunt;
+	public Set<Emprunt> getEmpruntsClient(){
+		return emprunt;
+	}
 	
 	/** Constructeur
 	 * 
