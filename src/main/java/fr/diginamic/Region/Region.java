@@ -1,4 +1,4 @@
-package fr.diginamic;
+package fr.diginamic.Region;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
