@@ -24,13 +24,13 @@ public class Emprunt {
 	
 	@Temporal(value = TemporalType.DATE)
 	@Column(name = "DATE_DEBUT")
-	private Date date_debut;
+	private Date dateDebut;
 	
 	@Column(name = "DELAI")
 	private Integer delai;
 	
 	@Column(name = "DATE_FIN")
-	private Date date_fin;
+	private Date dateFin;
 	
 	
 	@ManyToOne
@@ -62,11 +62,11 @@ public class Emprunt {
 	 * @param delai
 	 * @param date_fin
 	 */
-	public Emprunt(Integer id, Date date_debut, Integer delai, Date date_fin) {
+	public Emprunt(Integer id, Date dateDebut, Integer delai, Date dateFin) {
 		this.id = id;
-		this.date_debut = date_debut;
+		this.dateDebut = dateDebut;
 		this.delai = delai;
-		this.date_fin = date_fin;
+		this.dateFin = dateFin;
 	}
 
 
@@ -92,8 +92,8 @@ public class Emprunt {
 	/** Getter pour date_debut
 	 * @return the date_debut
 	 */
-	public Date getDate_debut() {
-		return date_debut;
+	public Date getDateDebut() {
+		return dateDebut;
 	}
 
 
@@ -101,8 +101,8 @@ public class Emprunt {
 	/** Setter pour date_debut
 	 * @param date_debut the date_debut to set
 	 */
-	public void setDate_debut(Date date_debut) {
-		this.date_debut = date_debut;
+	public void setDate_debut(Date dateDebut) {
+		this.dateDebut = dateDebut;
 	}
 
 
@@ -128,8 +128,8 @@ public class Emprunt {
 	/** Getter pour date_fin
 	 * @return the date_fin
 	 */
-	public Date getDate_fin() {
-		return date_fin;
+	public Date getDateFin() {
+		return dateFin;
 	}
 
 
@@ -137,8 +137,8 @@ public class Emprunt {
 	/** Setter pour date_fin
 	 * @param date_fin the date_fin to set
 	 */
-	public void setDate_fin(Date date_fin) {
-		this.date_fin = date_fin;
+	public void setDate_fin(Date dateFin) {
+		this.dateFin = dateFin;
 	}
 
 
@@ -146,7 +146,7 @@ public class Emprunt {
 
 	@Override
 	public String toString() {
-		return "Emprunt [id=" + id + ", date_debut=" + date_debut + ", delai=" + delai + ", date_fin=" + date_fin + "]";
+		return "Emprunt [id=" + id + ", dateDebut=" + dateDebut + ", delai=" + delai + ", dateFin=" + dateFin + "]";
 	}
 	
 	
